@@ -705,3 +705,289 @@
   color: var(--text-secondary);
   margin-left: 2px;
 }
+
+/* ── LIBRARY SCREEN ──────────────────────────────────────── */
+
+/* Search bar */
+.lib-search-wrap {
+  position: relative;
+  margin-bottom: var(--space-4);
+}
+
+.lib-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.lib-search-input {
+  width: 100%;
+  height: 46px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-4) 0 40px;
+  font-size: 15px;
+  color: var(--text-primary);
+  transition: border-color var(--dur-fast);
+}
+
+.lib-search-input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.lib-search-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Category filter bar */
+.library-filter-bar {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.library-filter-bar::-webkit-scrollbar { display: none; }
+
+.lib-cat-chip {
+  flex-shrink: 0;
+  height: 34px;
+  padding: 0 var(--space-3);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  touch-action: manipulation;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: background var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast);
+}
+
+.lib-cat-chip.selected {
+  background: var(--accent-muted);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.lib-cat-chip:active { transform: scale(0.96); }
+
+/* Exercise count */
+.lib-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: var(--space-3);
+}
+
+/* Exercise card row */
+.lib-exercise-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast);
+}
+
+.lib-exercise-card:active {
+  transform: scale(0.98);
+  background: var(--surface-2);
+}
+
+.lib-ex-left { flex: 1; min-width: 0; }
+
+.lib-ex-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.lib-ex-muscles {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.lib-ex-meta {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lib-ex-dot { opacity: 0.4; }
+
+.lib-ex-arrow { flex-shrink: 0; }
+
+/* ── Detail modal (bottom sheet) ─────────────────────────── */
+
+.lib-detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 300;
+  display: flex;
+  align-items: flex-end;
+  transition: background var(--dur-mid) var(--ease-out);
+}
+
+.lib-detail-overlay.open {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.lib-detail-sheet {
+  background: var(--surface);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  max-height: 92dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-3) var(--space-5) 0;
+  transform: translateY(100%);
+  transition: transform var(--dur-slow) var(--ease-out);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
+}
+
+.lib-detail-overlay.open .lib-detail-sheet {
+  transform: translateY(0);
+}
+
+.lib-detail-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--border-strong);
+  border-radius: var(--radius-full);
+  margin: 0 auto var(--space-4);
+}
+
+.lib-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.lib-detail-category {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.lib-detail-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--text-primary);
+  line-height: 1.05;
+}
+
+/* SVG body map */
+.lib-detail-svg-wrap {
+  background: var(--surface-2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lib-detail-svg-wrap svg {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+}
+
+/* Muscles badges */
+.lib-detail-muscles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+/* Stats row */
+.lib-detail-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.lib-detail-stat {
+  background: var(--surface-2);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-2);
+  text-align: center;
+}
+
+.lib-detail-stat-val {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.lib-detail-stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 3px;
+}
+
+/* Sections */
+.lib-detail-section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-2);
+}
+
+.lib-detail-equip {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-5);
+}
+
+.lib-detail-instructions {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
